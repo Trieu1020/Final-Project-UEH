@@ -169,14 +169,17 @@ class AlienIvasion:
 
     def reset_game(self):
         """Khởi động lại trò chơi"""
-        self.stats.reset_stats()
-        self.settings.initialize_dynamic_settings()
-        self.bullets.empty()
-        self.aliens.empty()
-        self.createfleet()
-        self.ship.center_ship()
-        self.game_active = True
-        self.game_over = False
+        self.stats.reset_stats()  # Reset thống kê game (mạng, điểm, cấp độ)
+        self.settings.initialize_dynamic_settings()  # Reset các cài đặt động
+        self.bullets.empty()  # Xóa tất cả đạn
+        self.aliens.empty()  # Xóa tất cả alien
+
+        self.createfleet()  # Tạo lại đội hình alien
+        self.ship.center_ship()  # Đưa tàu về vị trí giữa
+
+        self.sb.reset_score()  # Reset lại các giá trị trên ScoreBoard
+        self.game_active = True  # Bật trạng thái chơi game
+        self.game_over = False  # Tắt trạng thái game over
         pygame.mouse.set_visible(False)
 
     def run_game(self):
