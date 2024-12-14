@@ -68,3 +68,14 @@ class ScoreBoard:
             ship.rect.x = ship_number * ship.rect.width
             ship.rect.y = 10
             self.ships.add(ship)
+
+    def reset_score(self):
+        """Reset lại các thông tin điểm, cấp độ và mạng."""
+        self.stats.score = 0  # Đặt điểm về 0
+        self.stats.level = 1  # Đặt cấp độ về 1
+        self.stats.ship_left = self.settings.ship_limit  # Reset mạng về giá trị mặc định
+
+            # Cập nhật lại hiển thị trên scoreboard
+        self.prep_score()
+        self.prep_level()
+        self.prep_ships()
